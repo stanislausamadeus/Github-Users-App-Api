@@ -1,17 +1,15 @@
 <resources>
     <string name="app_name">GithubUsersAppApi</string>
+    <string name="search_title">Github Users Search</string>
+    <string name="detail_title">User Detail</string>
     <string name="app_logo">App Logo</string>
     <string name="item_avatar">Item Avatar</string>
     <string name="user_name">Username</string>
-    <string name="follower">%s follower</string>
-    <string name="following">%s following</string>
-    <string name="repositories">%s repositories</string>
     <string name="search">Search</string>
     <string name="search_username">Search Username</string>
-    <string name="website">Website</string>
+    <string name="search_website">Website</string>
     <string name="textfollower">Followers</string>
     <string name="textfollowing">Following</string>
     <string name="textrepositories">Repositories</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.githubusersappapi.data.SearchItemResponse
+import com.dicoding.githubusersappapi.data.ItemResponse
 import com.dicoding.githubusersappapi.databinding.ItemUserBinding
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
-    private val list = ArrayList<SearchItemResponse>()
+    private val list = ArrayList<ItemResponse>()
 
     private var onItemClickCallback: OnItemClickCallback? = null
 
@@ -16,24 +16,24 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setList(users: ArrayList<SearchItemResponse>) {
+    fun setList(users: ArrayList<ItemResponse>) {
         list.clear()
         list.addAll(users)
         notifyDataSetChanged()
     }
 
     inner class UserViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(searchItem: SearchItemResponse) {
+        fun bind(item: ItemResponse) {
             binding.root.setOnClickListener {
-                onItemClickCallback?.onItemClicked(searchItem)
+                onItemClickCallback?.onItemClicked(item)
             }
 
             Glide.with(itemView)
-                .load(searchItem.avatarUrl)
+                .load(item.avatarUrl)
                 .circleCrop()
                 .into(binding.imgItemPhoto)
-            binding.tvItemUsername.text = searchItem.login
-            binding.tvItemWebsite.text = searchItem.htmlUrl
+            binding.tvItemUsername.text = item.login
+            binding.tvItemWebsite.text = item.htmlUrl
         }
     }
 
@@ -49,6 +49,6 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     override fun getItemCount(): Int = list.size
 
     interface OnItemClickCallback{
-        fun onItemClicked(data: SearchItemResponse)
+        fun onItemClicked(data: ItemResponse)
     }
 }

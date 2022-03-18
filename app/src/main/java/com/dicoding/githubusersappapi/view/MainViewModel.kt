@@ -5,14 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.githubusersappapi.api.ApiConfig
-import com.dicoding.githubusersappapi.data.SearchItemResponse
+import com.dicoding.githubusersappapi.data.ItemResponse
 import com.dicoding.githubusersappapi.data.SearchResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
-    val listUsers = MutableLiveData<ArrayList<SearchItemResponse>>()
+    val listUsers = MutableLiveData<ArrayList<ItemResponse>>()
 
     companion object {
         private const val TAG = "MainViewModel"
@@ -39,5 +39,5 @@ class MainViewModel : ViewModel() {
             })
     }
 
-    fun getSearch(): LiveData<ArrayList<SearchItemResponse>>{ return listUsers }
+    fun getSearch(): LiveData<ArrayList<ItemResponse>>{ return listUsers }
 }

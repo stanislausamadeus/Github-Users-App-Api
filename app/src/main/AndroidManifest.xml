@@ -13,7 +13,8 @@
         android:theme="@style/Theme.GithubUsersAppApi">
         <activity
             android:name=".view.DetailUserActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/detail_title"/>
         <activity
             android:name=".view.SplashScreen"
             android:exported="true">
@@ -25,7 +26,8 @@
         </activity>
         <activity
             android:name=".view.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false"
+            android:label="@string/search_title"/>
     </application>
 
 </manifest>

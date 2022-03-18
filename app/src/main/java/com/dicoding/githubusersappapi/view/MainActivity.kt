@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.githubusersappapi.data.SearchItemResponse
+import com.dicoding.githubusersappapi.data.ItemResponse
 import com.dicoding.githubusersappapi.databinding.ActivityMainBinding
 import com.dicoding.githubusersappapi.view.adapter.UserAdapter
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
 
         adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: SearchItemResponse) {
+            override fun onItemClicked(data: ItemResponse) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
                     startActivity(it)
@@ -43,12 +43,12 @@ class MainActivity : AppCompatActivity() {
             searchUser()
         }
 
-        viewModel.getSearch().observe(this, {
+        viewModel.getSearch().observe(this) {
             if (it != null) {
                 adapter.setList(it)
                 showLoading(false)
             }
-        })
+        }
     }
 
     private fun showRecyclerList() {

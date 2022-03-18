@@ -55,7 +55,7 @@
             android:ellipsize="end"
             card_view:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
             card_view:layout_constraintStart_toStartOf="@+id/tv_item_username"
-            tools:text="@string/website" />
+            tools:text="@string/search_website" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

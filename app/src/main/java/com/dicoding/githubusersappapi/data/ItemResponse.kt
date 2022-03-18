@@ -2,7 +2,7 @@ package com.dicoding.githubusersappapi.data
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchItemResponse(
+data class ItemResponse(
 
 	@field:SerializedName("avatar_url")
 	val avatarUrl: String,

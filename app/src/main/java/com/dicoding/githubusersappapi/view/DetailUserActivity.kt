@@ -22,13 +22,15 @@ class DetailUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
+        val bundle = Bundle()
+        bundle.putString(EXTRA_USERNAME, username)
 
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
 
         if (username != null) {
             viewModel.setDetailUser(username)
         }
-        viewModel.getDetailUser().observe(this,{
+        viewModel.getDetailUser().observe(this) {
             if (it != null) {
                 binding.detailUsername.text = it.login
                 binding.detailName.text = it.name
@@ -42,9 +44,9 @@ class DetailUserActivity : AppCompatActivity() {
                     .circleCrop()
                     .into(binding.detailAvatar)
             }
-        })
+        }
 
-        val sectionsPagerAdapter = SectionPagerAdapter(this)
+        val sectionsPagerAdapter = SectionPagerAdapter(this, bundle )
         val viewPager: ViewPager2 = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
@@ -53,9 +55,6 @@ class DetailUserActivity : AppCompatActivity() {
         }.attach()
         supportActionBar?.elevation = 0f
     }
-
-
-
 
     companion object {
         const val EXTRA_USERNAME = "extra_username"
