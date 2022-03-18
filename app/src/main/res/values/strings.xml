@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GithubUsersAppApi</string>
+    <string name="app_logo">App Logo</string>
+    <string name="item_avatar">Item Avatar</string>
+    <string name="user_name">Username</string>
+    <string name="follower">%s follower</string>
+    <string name="following">%s following</string>
+    <string name="repositories">%s repositories</string>
+    <string name="search">Search</string>
+    <string name="search_username">Search Username</string>
+    <string name="website">Website</string>
 </resources>
