@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/BackgroundColor"
+    tools:context=".view.DetailUserActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary">
+
+        <ImageView
+            android:id="@+id/detail_avatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="180dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/detail_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:text="Username received"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/detail_avatar"
+            app:layout_constraintStart_toStartOf="@+id/detail_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/detail_avatar" />
+
+        <TextView
+            android:id="@+id/detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="Name received"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/detail_username"
+            app:layout_constraintStart_toStartOf="@+id/detail_username"
+            app:layout_constraintTop_toBottomOf="@+id/detail_username" />
+
+        <TextView
+            android:id="@+id/detail_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Company received"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/detail_name"
+            app:layout_constraintStart_toStartOf="@+id/detail_name"
+            app:layout_constraintTop_toBottomOf="@+id/detail_name" />
+
+        <TextView
+            android:id="@+id/detail_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/detail_company"
+            app:layout_constraintStart_toStartOf="@+id/detail_company"
+            app:layout_constraintTop_toBottomOf="@+id/detail_company"
+            tools:text="Location received"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/detail_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="follower received"
+            android:textAlignment="center"
+            android:textColor="@color/gray_dark"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_following"
+            app:layout_constraintEnd_toStartOf="@+id/detail_following"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_following" />
+
+        <TextView
+            android:id="@+id/detail_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/gray_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_location"
+            tools:text="following received"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/detail_repositories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray_dark"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_following"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_following"
+            app:layout_constraintTop_toTopOf="@+id/detail_following"
+            tools:text="repositories received" />
+
+        <TextView
+            android:id="@+id/text_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textfollower"
+            android:textAlignment="center"
+            android:textColor="?attr/colorOnPrimary"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/detail_follower"
+            app:layout_constraintStart_toStartOf="@+id/detail_follower"
+            app:layout_constraintTop_toBottomOf="@+id/detail_follower" />
+
+        <TextView
+            android:id="@+id/text_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textfollowing"
+            android:textAlignment="center"
+            android:textColor="?attr/colorOnPrimary"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="@+id/detail_following"
+            app:layout_constraintStart_toStartOf="@+id/detail_following"
+            app:layout_constraintTop_toBottomOf="@+id/detail_following" />
+
+        <TextView
+            android:id="@+id/text_repositories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/textrepositories"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/detail_repositories"
+            app:layout_constraintStart_toStartOf="@+id/detail_repositories"
+            app:layout_constraintTop_toBottomOf="@+id/detail_repositories" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_following"
+            app:tabIndicatorColor="?attr/colorSecondaryVariant"
+            app:tabSelectedTextColor="@color/gray_dark"
+            app:tabTextColor="?attr/colorOnPrimary" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabs"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="?attr/colorSecondaryVariant"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
