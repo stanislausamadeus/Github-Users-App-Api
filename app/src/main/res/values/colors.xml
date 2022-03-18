@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dark_charcoal">#333333</color>
-    <color name="gray_dark">#666666</color>
+    <color name="gray_dark">#BEBEBE</color>
     <color name="gray_light">#fafafa</color>
     <color name="mahogany">#BD2C00</color>
     <color name="apple">#6CC644</color>

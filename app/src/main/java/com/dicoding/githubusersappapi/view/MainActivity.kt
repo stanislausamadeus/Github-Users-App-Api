@@ -1,11 +1,12 @@
 package com.dicoding.githubusersappapi.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dicoding.githubusersappapi.data.SearchItemResponse
 import com.dicoding.githubusersappapi.databinding.ActivityMainBinding
 import com.dicoding.githubusersappapi.view.adapter.UserAdapter
 
@@ -21,6 +22,17 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
+
+        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
+            override fun onItemClicked(data: SearchItemResponse) {
+                Intent(this@MainActivity, DetailUserActivity::class.java).also {
+                    it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
+                    startActivity(it)
+                }
+            }
+
+        })
+
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
 
         binding.rvUser.setHasFixedSize(true)

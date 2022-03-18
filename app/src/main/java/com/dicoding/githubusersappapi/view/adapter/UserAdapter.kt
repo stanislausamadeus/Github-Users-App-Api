@@ -10,14 +10,24 @@ import com.dicoding.githubusersappapi.databinding.ItemUserBinding
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     private val list = ArrayList<SearchItemResponse>()
 
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     fun setList(users: ArrayList<SearchItemResponse>) {
         list.clear()
         list.addAll(users)
         notifyDataSetChanged()
     }
 
-    class UserViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class UserViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(searchItem: SearchItemResponse) {
+            binding.root.setOnClickListener {
+                onItemClickCallback?.onItemClicked(searchItem)
+            }
+
             Glide.with(itemView)
                 .load(searchItem.avatarUrl)
                 .circleCrop()
@@ -37,4 +47,8 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface OnItemClickCallback{
+        fun onItemClicked(data: SearchItemResponse)
+    }
 }
