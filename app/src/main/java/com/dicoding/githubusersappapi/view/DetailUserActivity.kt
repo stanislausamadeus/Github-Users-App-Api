@@ -2,6 +2,7 @@ package com.dicoding.githubusersappapi.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -25,6 +26,8 @@ class DetailUserActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
+        showLoading(true)
+
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
 
         if (username != null) {
@@ -32,17 +35,20 @@ class DetailUserActivity : AppCompatActivity() {
         }
         viewModel.getDetailUser().observe(this) {
             if (it != null) {
-                binding.detailUsername.text = it.login
-                binding.detailName.text = it.name
-                binding.detailCompany.text = it.company
-                binding.detailLocation.text = it.location
-                binding.detailFollower.text = it.followers.toString()
-                binding.detailFollowing.text = it.following.toString()
-                binding.detailRepositories.text = it.publicRepos.toString()
-                Glide.with(this@DetailUserActivity)
-                    .load(it.avatarUrl)
-                    .circleCrop()
-                    .into(binding.detailAvatar)
+                binding.apply {
+                    detailUsername.text = it.login
+                    detailName.text = it.name
+                    detailCompany.text = it.company
+                    detailLocation.text = it.location
+                    detailFollower.text = it.followers.toString()
+                    detailFollowing.text = it.following.toString()
+                    detailRepositories.text = it.publicRepos.toString()
+                    Glide.with(this@DetailUserActivity)
+                        .load(it.avatarUrl)
+                        .circleCrop()
+                        .into(detailAvatar)
+                    showLoading(false)
+                }
             }
         }
 
@@ -54,6 +60,14 @@ class DetailUserActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 
     companion object {
