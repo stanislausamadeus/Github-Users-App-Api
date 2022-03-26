@@ -1,22 +1,18 @@
 package com.dicoding.githubusersappapi.view
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.dicoding.githubusersappapi.api.ApiConfig
-import com.dicoding.githubusersappapi.data.ItemResponse
-import com.dicoding.githubusersappapi.data.SearchResponse
+import com.dicoding.githubusersappapi.data.preferences.SettingPreferences
+import com.dicoding.githubusersappapi.data.response.ItemResponse
+import com.dicoding.githubusersappapi.data.response.SearchResponse
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel : ViewModel() {
     val listUsers = MutableLiveData<ArrayList<ItemResponse>>()
-
-    companion object {
-        private const val TAG = "MainViewModel"
-    }
 
     fun setSearch(query: String){
         ApiConfig.getApiService()
@@ -40,4 +36,8 @@ class MainViewModel : ViewModel() {
     }
 
     fun getSearch(): LiveData<ArrayList<ItemResponse>>{ return listUsers }
+
+    companion object {
+        private const val TAG = "MainViewModel"
+    }
 }

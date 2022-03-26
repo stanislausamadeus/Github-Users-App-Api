@@ -12,9 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUsersAppApi">
         <activity
+            android:name=".view.FavoriteUsersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.DetailUserActivity"
             android:exported="false"
-            android:label="@string/detail_title"/>
+            android:label="@string/detail_title" />
         <activity
             android:name=".view.SplashScreen"
             android:exported="true">
@@ -27,7 +33,7 @@
         <activity
             android:name=".view.MainActivity"
             android:exported="false"
-            android:label="@string/search_title"/>
+            android:label="@string/search_title" />
     </application>
 
 </manifest>

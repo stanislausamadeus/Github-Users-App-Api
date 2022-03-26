@@ -8,10 +8,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.dicoding.githubusersappapi.R
+import com.dicoding.githubusersappapi.data.database.FavoriteUsers
 import com.dicoding.githubusersappapi.databinding.ActivityDetailUserBinding
+import com.dicoding.githubusersappapi.helper.DetailUserViewModelFactory
 import com.dicoding.githubusersappapi.view.adapter.SectionPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailUserActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailUserBinding
@@ -23,12 +29,15 @@ class DetailUserActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = intent.getStringExtra(EXTRA_USERNAME)
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        val avatar = intent.getStringExtra(EXTRA_AVATAR)
+        val html = intent.getStringExtra(EXTRA_HTML)
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
         showLoading(true)
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
+        viewModel = ViewModelProvider(this@DetailUserActivity, DetailUserViewModelFactory.getInstance(this@DetailUserActivity.application)).get(DetailUserViewModel::class.java)
 
         if (username != null) {
             viewModel.setDetailUser(username)
@@ -52,6 +61,35 @@ class DetailUserActivity : AppCompatActivity() {
             }
         }
 
+        var isFavorite = false
+        CoroutineScope(Dispatchers.IO).launch {
+            val count = viewModel.checkFavorite(id)
+            withContext(Dispatchers.Main) {
+                if (count != null) {
+                    if (count > 0) {
+                        binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+                        isFavorite = true
+                    } else {
+                        binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                        isFavorite = false
+                    }
+                }
+            }
+        }
+
+
+        binding.fabFavorite.setOnClickListener {
+            isFavorite = !isFavorite
+            if (isFavorite) {
+                viewModel.insert(id, username, avatar, html)
+                binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
+            } else {
+                viewModel.delete(id)
+                binding.fabFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            }
+        }
+
+
         val sectionsPagerAdapter = SectionPagerAdapter(this, bundle )
         val viewPager: ViewPager2 = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
@@ -72,6 +110,9 @@ class DetailUserActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_ID = "extra_id"
+        const val EXTRA_AVATAR = "extra_avatar"
+        const val EXTRA_HTML = "extra_html"
         @StringRes
         private val TAB_TITLES = intArrayOf(R.string.textfollower, R.string.textfollowing)
     }

@@ -24,9 +24,7 @@ class FollowersFragment : Fragment(R.layout.fragment_follower) {
         _binding = FragmentFollowerBinding.bind(view)
 
         adapter = UserAdapter()
-        adapter.notifyDataSetChanged()
 
-        binding.rvFollower.setHasFixedSize(true)
         showRecyclerList()
         showLoading(true)
 
@@ -48,6 +46,7 @@ class FollowersFragment : Fragment(R.layout.fragment_follower) {
     private fun showRecyclerList() {
         binding.rvFollower.layoutManager = LinearLayoutManager(activity)
         binding.rvFollower.adapter = adapter
+        binding.rvFollower.setHasFixedSize(true)
     }
 
     private fun showLoading(state: Boolean) {

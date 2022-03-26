@@ -1,4 +1,4 @@
-package com.dicoding.githubusersappapi.data
+package com.dicoding.githubusersappapi.data.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -33,6 +33,9 @@ data class DetailResponse(
 
 	@field:SerializedName("login")
 	val login: String,
+
+	@field:SerializedName("html_url")
+	val htmlUrl: String,
 
 	@field:SerializedName("followers_url")
 	val followersUrl: String

@@ -1,7 +1,9 @@
 package com.dicoding.githubusersappapi.api
 
 import com.dicoding.githubusersappapi.BuildConfig
-import com.dicoding.githubusersappapi.data.*
+import com.dicoding.githubusersappapi.data.response.DetailResponse
+import com.dicoding.githubusersappapi.data.response.ItemResponse
+import com.dicoding.githubusersappapi.data.response.SearchResponse
 import retrofit2.Call
 import retrofit2.http.*
 
