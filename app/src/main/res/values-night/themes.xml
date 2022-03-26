@@ -14,12 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/dark_charcoal</item>
-        <item name="colorPrimaryVariant">@color/black</item>
-        <item name="colorOnPrimary">@color/gray_light</item>
-    </style>
-
     <style name="BackgroundColor">
         <item name="android:background">@color/black</item>
     </style>

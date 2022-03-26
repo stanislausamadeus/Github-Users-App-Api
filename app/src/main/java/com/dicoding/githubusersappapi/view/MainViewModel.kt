@@ -1,12 +1,12 @@
 package com.dicoding.githubusersappapi.view
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.dicoding.githubusersappapi.api.ApiConfig
-import com.dicoding.githubusersappapi.data.preferences.SettingPreferences
 import com.dicoding.githubusersappapi.data.response.ItemResponse
 import com.dicoding.githubusersappapi.data.response.SearchResponse
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

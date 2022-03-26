@@ -1,27 +1,18 @@
 package com.dicoding.githubusersappapi.view
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CompoundButton
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.githubusersappapi.R
-import com.dicoding.githubusersappapi.data.preferences.SettingPreferences
 import com.dicoding.githubusersappapi.data.response.ItemResponse
 import com.dicoding.githubusersappapi.databinding.ActivityMainBinding
 import com.dicoding.githubusersappapi.view.adapter.UserAdapter
-import com.dicoding.githubusersappapi.helper.ThemeViewModelFactory
-import com.google.android.material.switchmaterial.SwitchMaterial
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var binding: ActivityMainBinding

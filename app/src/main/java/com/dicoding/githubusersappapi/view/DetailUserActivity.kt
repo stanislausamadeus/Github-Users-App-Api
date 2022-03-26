@@ -1,14 +1,13 @@
 package com.dicoding.githubusersappapi.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.dicoding.githubusersappapi.R
-import com.dicoding.githubusersappapi.data.database.FavoriteUsers
 import com.dicoding.githubusersappapi.databinding.ActivityDetailUserBinding
 import com.dicoding.githubusersappapi.helper.DetailUserViewModelFactory
 import com.dicoding.githubusersappapi.view.adapter.SectionPagerAdapter

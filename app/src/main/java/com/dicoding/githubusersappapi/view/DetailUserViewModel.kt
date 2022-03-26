@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.githubusersappapi.api.ApiConfig
-import com.dicoding.githubusersappapi.data.database.FavoriteUsers
 import com.dicoding.githubusersappapi.data.response.DetailResponse
 import com.dicoding.githubusersappapi.view.repository.FavoriteUsersRepository
 import retrofit2.Call
